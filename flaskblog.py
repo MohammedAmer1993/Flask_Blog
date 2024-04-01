@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 app = Flask(__name__)
 content1 = '''
     this is the content of the frist post
@@ -18,13 +18,13 @@ content2 = '''
 '''
 posts = [
     {
-        "Author": "Mohammed Amer",
+        "author": "Mohammed Amer",
         "title": "Golabal warming",
         "date": "20 Mar 2024",
         "content": content1
     },
     {
-        "Author": "Hossam Bahgat",
+        "author": "Hossam Bahgat",
         "title": "Free Jouranalism",
         "date": "12 Feb 2024",
         "content": content2
