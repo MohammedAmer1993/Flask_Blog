@@ -45,12 +45,12 @@ def about():
     return render_template('about.html', title="zomrda")
 
 
-@app.route("/register", method=["GET", "POST"])
+@app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
-    if form.validate():
+    if form.validate_on_submit():
         flash(f'account created for {form.username.data}', "success")
-        redirect(url_for("home"))
+        return redirect(url_for("home"))
     return render_template("register.html", form=form, title="Register")
 
 
