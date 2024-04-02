@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import RegistrationForm, LoginForm
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "3959627f298c8aa94e73125fc253658862fa1948a8904838c12e7695cad13ef5"
 content1 = '''
     this is the content of the frist post
     we hope you enjoy reading it. it is 
@@ -34,13 +36,28 @@ posts = [
 
 @app.route('/')
 @app.route("/home")
-def hello_world():
+def home():
     return render_template('home.html', posts=posts, title="zomrda")
 
 
 @app.route('/about')
-def mo():
+def about():
     return render_template('about.html', title="zomrda")
+
+
+@app.route("/register", method=["GET", "POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate():
+        flash(f'account created for {form.username.data}', "success")
+        redirect(url_for("home"))
+    return render_template("register.html", form=form, title="Register")
+
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template("login.html", form=form, title="login")
 
 
 if __name__ == "__main__":
