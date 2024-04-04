@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask, render_template, url_for, flash, redirect
+from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "3959627f298c8aa94e73125fc253658862fa1948a8904838c12e7695cad13ef5"
