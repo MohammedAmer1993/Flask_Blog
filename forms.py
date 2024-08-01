@@ -26,3 +26,5 @@ class LoginForm(FlaskForm):
 
 if __name__ == "__main__":
     pass
+
+# test
